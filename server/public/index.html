@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pulse Monitor</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div><h1>Pulse Monitor</h1><p>ESP32 · MAX30102 · Local health research dashboard</p></div><span id="status" class="status">Connecting…</span></header>
+<main>
+<section class="cards">
+  <article class="metric"><span>Heart rate</span><strong id="hr">—</strong><small>bpm · latest valid uploaded sample</small></article>
+  <article class="metric"><span>SpO₂</span><strong id="spo2">—</strong><small>% · optical estimate</small></article>
+  <article class="metric"><span>Signal quality</span><strong id="quality">—</strong><small>% · rough firmware heuristic</small></article>
+  <article class="metric"><span>Samples stored</span><strong id="count">0</strong><small>Persistent SQLite records</small></article>
+</section>
+<section class="panel ai-panel"><h2>Latest AI-assisted review</h2><p id="aiSummary" class="ai-summary">Waiting for a measurement and AI result.</p><p class="muted">Experimental measurement review only — not an arrhythmia detector or medical diagnosis.</p></section>
+<section class="panel"><div class="panel-head"><h2>Recent measurements</h2><button id="refresh">Refresh</button></div>
+<div class="table-wrap"><table><thead><tr><th>Recorded at</th><th>HR</th><th>SpO₂</th><th>Quality</th><th>Pulse interval flag</th><th>AI review flags (experimental)</th></tr></thead><tbody id="readings"></tbody></table></div></section>
+<section class="panel"><h2>Log symptoms</h2><p class="muted">Record what you felt and when. Timing is useful context, not proof of causation.</p>
+<form id="symptomForm">
+<label>Symptoms<textarea id="symptoms" required maxlength="500" placeholder="e.g. dizziness, palpitations, shortness of breath"></textarea></label>
+<div class="form-row"><label>Severity (1 mild – 5 severe)<select id="severity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>
+<label>Time occurred<input id="occurredAt" type="datetime-local" required></label></div>
+<label>Notes (optional)<textarea id="notes" maxlength="2000" placeholder="Activity, posture, caffeine, context…"></textarea></label>
+<button type="submit">Save symptom log</button><span id="symptomStatus" role="status"></span>
+</form></section>
+<section class="panel"><h2>Recent symptom logs</h2><div id="symptomList" class="symptom-list">No symptom logs yet.</div></section>
+<section class="notice"><strong>Research prototype only.</strong> This device does not diagnose arrhythmias or replace clinical assessment. MAX30102 does not provide an ECG. Seek urgent medical care for severe or emergency symptoms; do not wait for this dashboard.</section>
+</main><script src="/app.js"></script>
+</body></html>

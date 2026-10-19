@@ -1,0 +1,23 @@
+# dependencies / virtual environments
+node_modules/
+ai_service/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# local secrets and runtime state
+server/.env
+integrations/.env
+live_demo/.env
+integrations/bridge_state.json
+
+# local database and runtime data
+server/data/
+
+# downloaded photo candidates (re-fetch with presentation/fetch_component_photos.py)
+presentation/assets_raw/
+
+# editor / OS junk
+.DS_Store
+Thumbs.db
+*.log

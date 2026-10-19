@@ -1,0 +1,11 @@
+flowchart LR
+  A[MAX30102 optical sensor] --> B[ESP32 acquisition and signal checks]
+  B -->|Wi-Fi HTTP POST| C[Node.js API]
+  B -->|ThingSpeak update| D[ThingSpeak channel]
+  C --> E[(SQLite database)]
+  E --> F[Web dashboard]
+  F --> G[Symptom logging]
+  G --> C
+  C --> H[Python anomaly scoring service]
+  H --> C
+  D --> I[ThingSpeak MATLAB plots]

@@ -1,0 +1,13 @@
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#172033;background:#f4f7fb}
+*{box-sizing:border-box}body{margin:0}header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px max(20px,calc((100% - 1180px)/2));background:#14213d;color:white}
+h1{margin:0;font-size:1.7rem}header p{margin:5px 0 0;color:#c9d4e7}.status{border:1px solid #6e809f;border-radius:999px;padding:7px 12px;font-size:.85rem}
+main{max-width:1180px;margin:24px auto;padding:0 18px}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.metric,.panel,.notice{background:white;border:1px solid #e0e6ef;border-radius:14px;padding:18px;box-shadow:0 3px 12px #182b4908}
+.metric span{display:block;color:#58677e;font-size:.9rem}.metric strong{display:block;font-size:2rem;margin:9px 0}.metric small,.muted{color:#69768a}
+.panel{margin-top:18px}.panel h2{font-size:1.15rem;margin:0 0 14px}.panel-head{display:flex;justify-content:space-between;align-items:center}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th,td{text-align:left;padding:11px;border-bottom:1px solid #e8edf4;font-size:.9rem}th{color:#58677e;font-weight:600}
+form{display:grid;gap:13px}label{display:grid;gap:7px;font-size:.9rem;color:#45536a}input,textarea,select{font:inherit;padding:10px;border:1px solid #cdd6e3;border-radius:8px;width:100%;background:white;color:#172033}textarea{min-height:70px;resize:vertical}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{font:inherit;border:0;background:#244d91;color:white;padding:10px 15px;border-radius:8px;cursor:pointer}button:hover{background:#193d79}.symptom-list{display:grid;gap:10px}.symptom{border:1px solid #e3e9f2;padding:12px;border-radius:9px}.symptom small{color:#69768a}.notice{margin:18px 0 30px;border-left:4px solid #d28b26;color:#5b4b30;background:#fffaf0}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}header{align-items:flex-start;flex-direction:column}.form-row{grid-template-columns:1fr}}
+
+.ai-panel{border-left:4px solid #526a91}.ai-summary{margin:4px 0 8px;font-weight:600;line-height:1.5}.ai-flags{font-weight:400;color:#45536a;margin-top:8px}.ai-summary .flag{display:inline-block;margin:4px 6px 2px 0;padding:4px 8px;border-radius:999px;background:#fff3da;color:#795515;font-size:.85rem}

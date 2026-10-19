@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Live read-only view of the Pulse Monitor ThingSpeak channel — ESP32 + MAX30102 research prototype.">
+<title>Pulse Monitor — Live</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>Pulse Monitor <span class="live-badge"><span class="dot"></span>LIVE</span></h1>
+    <p>ESP32 · MAX30102 · live ThingSpeak view</p>
+  </div>
+  <span id="status" class="status">Connecting…</span>
+</header>
+
+<main>
+  <section class="cards">
+    <article class="metric"><span>Heart rate</span><strong id="hr">—</strong><small>bpm · latest uploaded sample</small></article>
+    <article class="metric"><span>SpO₂</span><strong id="spo2">—</strong><small>% · optical estimate</small></article>
+    <article class="metric"><span>Signal quality</span><strong id="quality">—</strong><small>% · rough firmware heuristic</small></article>
+    <article class="metric"><span>Samples in view</span><strong id="count">0</strong><small>latest ThingSpeak entries</small></article>
+  </section>
+
+  <section class="panel ai-panel">
+    <h2>Latest AI-assisted review</h2>
+    <p id="aiSummary" class="ai-summary">Waiting for a measurement.</p>
+    <p class="muted">Threshold review only in this live view — the experimental anomaly model runs in the
+      local AI service. Not a diagnosis or arrhythmia detector.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Recent measurements</h2>
+      <button id="refresh" type="button">Refresh</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Recorded at</th><th>HR</th><th>SpO₂</th><th>Quality</th>
+          <th>Pulse interval flag</th><th>Review flags (experimental)</th>
+        </tr></thead>
+        <tbody id="readings"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel demo-note">
+    <h2>What this live page is — and isn’t</h2>
+    <p>This is a read-only public view of the project’s ThingSpeak channel. It shows the newest entries and
+      applies the same threshold review rules as the local AI service, computed in a serverless function.</p>
+    <p class="muted">The full system — SQLite persistence, symptom journal, the ThingSpeak bridge and the Python
+      Isolation Forest service — runs locally on the project machine. This page has no database and no write access.</p>
+  </section>
+
+  <section class="notice"><strong>Research prototype only.</strong> This device does not diagnose arrhythmias or
+    replace clinical assessment. MAX30102 does not provide an ECG. Seek urgent medical care for severe or emergency
+    symptoms; do not wait for this dashboard.</section>
+
+  <footer class="page-foot">
+    <span>Pulse Monitor · ESP32 heart-rate &amp; SpO₂ pipeline</span>
+    <span>Data: ThingSpeak channel · updates ~20 s</span>
+  </footer>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

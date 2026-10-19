@@ -1,0 +1,12 @@
+{
+  "name": "pulse-monitor-live",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Read-only live view of the Pulse Monitor ThingSpeak channel (Vercel deployment).",
+  "scripts": {
+    "dev": "node dev-server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
