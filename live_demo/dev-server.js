@@ -66,6 +66,19 @@ const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
 
   if (url.pathname === "/api/feeds") {
+    if (!MOCK && process.env.THINGSPEAK_PROXY_URL) {
+      fetch(process.env.THINGSPEAK_PROXY_URL, { signal: AbortSignal.timeout(15000) })
+        .then(async upstream => {
+          const payload = await upstream.json();
+          res.writeHead(upstream.status, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
+          res.end(JSON.stringify(payload));
+        })
+        .catch(() => {
+          res.writeHead(502, { "Content-Type": "application/json; charset=utf-8" });
+          res.end(JSON.stringify({ error: "Could not reach the live ThingSpeak proxy" }));
+        });
+      return;
+    }
     if (MOCK) {
       const readings = mockReadings();
       res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });

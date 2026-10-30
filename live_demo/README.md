@@ -5,13 +5,16 @@ Vercel without changing the local project.
 
 - `api/feeds.js` — serverless function. Reads the channel server-side with the
   Read API Key (never sent to the browser), normalises entries and applies the
-  same threshold rules as the local AI service.
+  legacy feed flags. The browser applies the documented review rules separately.
 - `public/` — the dashboard page (HTML/CSS/JS, same visual language as the
   local dashboard).
 - `dev-server.js` — local preview server, so you can test without Vercel.
 
-> This deployment has **no database, no symptom journal, no bridge and no
-> Isolation Forest**. Those run in the full local stack. The page says so.
+The dashboard includes a browser-local symptom journal, CSV/JSON exports,
+configurable review bands, evidence reports and optional browser notifications.
+It has no server database, device bridge or connected Isolation Forest model.
+See [review design, sources and limitations](REVIEW.md). Run `npm test` to check
+the review engine.
 
 ## Deploy (GitHub import — recommended)
 

@@ -4,7 +4,8 @@
   "private": true,
   "description": "Read-only live view of the Pulse Monitor ThingSpeak channel (Vercel deployment).",
   "scripts": {
-    "dev": "node dev-server.js"
+    "dev": "node dev-server.js",
+    "test": "node --test test/*.test.js"
   },
   "engines": {
     "node": ">=20"
